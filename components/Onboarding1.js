@@ -18,7 +18,6 @@ const Onboarding1 = ({navigation}) => {
         <View
           className="h-80 w-screen flex flex-col
       justify-end absolute bottom-0 rounded-t-3xl">
-         
           <View className="flex flex-row justify-between">
             <TouchableOpacity
               className="mx-8 my-8 text-slate-300"
