@@ -13,7 +13,7 @@ import {
       <View className="flex flex-1 justify-center">
         <ImageBackground
           source={require('../assets/Welcome3.png')}
-          resizeMode="cover"
+          resizeMode="stretch"
           className="h-screen w-screen flex flex-1 flex-col">
           <View
             className="h-80 w-screen flex flex-col
@@ -23,14 +23,14 @@ import {
               <TouchableOpacity
                 className="mx-8 my-8 text-slate-300"
                 onPress={() => {
-                  navigation.navigate('Login');
+                  navigation.navigate('Details');
                 }}>
                 <Text className="text-white text-lg">SKIP</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 className="mx-8 my-8"
                 onPress={() => {
-                  navigation.navigate('Login');
+                  navigation.navigate('Details');
                 }}>
                 <Text className="text-white text-lg">NEXT</Text>
               </TouchableOpacity>

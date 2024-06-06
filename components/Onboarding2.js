@@ -23,7 +23,7 @@ import {
               <TouchableOpacity
                 className="mx-8 my-8 text-slate-300"
                 onPress={() => {
-                  navigation.navigate('Login');
+                  navigation.navigate('Details');
                 }}>
                 <Text className="text-white text-lg">SKIP</Text>
               </TouchableOpacity>
