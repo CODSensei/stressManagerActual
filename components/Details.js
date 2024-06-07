@@ -21,23 +21,23 @@ const Details = ({navigation}) => {
         resizeMode="cover"
         className="h-screen w-screen flex flex-1 flex-col">
         <View
-          className="h-[500px] w-[340px] bg-rose-500 flex flex-col
-      justify-between absolute top-40 left-6  rounded-3xl">
+          className="h-[500px] w-[340px] bg-blue-50 flex flex-col
+      justify-between absolute top-40 self-center  rounded-3xl">
           <View className="h-16 flex justify-center">
-            <Text className="text-center text-3xl font-medium text-yellow-300 underline">
+            <Text className="text-center text-3xl font-medium text-violet-600 underline">
               Basic Details
             </Text>
           </View>
           <View className="h-full w-full my-4">
             <TextInput
-              className="border-2 px-4 rounded-lg mx-7 my-1 mb-5 text-yellow-300 font-medium text-lg"
+              className="border-2 px-4 rounded-lg mx-7 my-1 mb-5 text-black font-medium text-lg"
               placeholder="Enter your Name"
               onChangeText={setName}
               value={name}
               textContentType='name'
             />
             <TextInput
-              className="border-2 px-4 rounded-lg my-1 mx-7 mb-5 text-yellow-300 font-medium text-lg"
+              className="border-2 px-4 rounded-lg my-1 mx-7 mb-5 text-black font-medium text-lg"
               placeholder="Enter your Contact Number"
               onChangeText={setNumber}
               value={number}
@@ -45,7 +45,7 @@ const Details = ({navigation}) => {
               keyboardType='phone-pad'
             />
             <TextInput
-              className="border-2 px-4 rounded-lg my-1 mb-5 mx-7 text-yellow-300 font-medium text-lg"
+              className="border-2 px-4 rounded-lg my-1 mb-5 mx-7 text-black font-medium text-lg"
               placeholder="Enter your Email Address"
               onChangeText={setEmail}
               value={email}
@@ -53,17 +53,17 @@ const Details = ({navigation}) => {
               textContentType='emailAddress'
             />
             <TextInput
-              className="border-2 px-4 rounded-lg my-1 mb-5 mx-7 text-yellow-300 font-medium text-lg"
+              className="border-2 px-4 rounded-lg my-1 mb-5 mx-7 text-black font-medium text-lg"
               placeholder="Enter your Persuing Course"
               onChangeText={setCourse}
               value={course}
             />
-            <TouchableOpacity className="rounded-2xl flex-row bg-yellow-400 justify-center w-28 h-10 ml-28 my-4 items-center py-1"
+            <TouchableOpacity className="rounded-2xl flex-row bg-violet-600 justify-center w-28 h-10 ml-28 my-4 items-center py-1"
             onPress={() => {
               navigation.navigate('Questions');
             }}
             >
-              <Text className="text-black text-base font-semibold">SUBMIT</Text>
+              <Text className="text-white text-base font-semibold">SUBMIT</Text>
             </TouchableOpacity>
           </View>
         </View>
