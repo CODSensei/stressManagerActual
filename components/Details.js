@@ -9,13 +9,29 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {ALERT_TYPE, Dialog} from 'react-native-alert-notification';
+import firestore from '@react-native-firebase/firestore';
+
 
 const Details = ({navigation}) => {
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
-  const [email, setEmail] = useState('');
-  const [course, setCourse] = useState('');
+  let [Name, setName] = useState('');
+  let [Number, setNumber] = useState('');
+  let [Email, setEmail] = useState('');
+  let [Course, setCourse] = useState('');
 
+  let dataupdate = ()=>{
+    firestore()
+  .collection('users')
+  .doc(Email)
+  .set({
+    name: Name,
+    number: Number,
+    email: Email,
+    course : Course,
+
+  })
+  .then(() => {
+    console.log('User added!');
+  });}
   return (
     <View className="flex flex-1 justify-center">
       <ImageBackground
@@ -35,14 +51,14 @@ const Details = ({navigation}) => {
               className="border-2 px-4 rounded-lg mx-7 my-1 mb-5 text-black font-medium text-lg"
               placeholder="Enter your Name"
               onChangeText={setName}
-              value={name}
+              value={Name}
               textContentType="name"
             />
             <TextInput
               className="border-2 px-4 rounded-lg my-1 mx-7 mb-5 text-black font-medium text-lg"
               placeholder="Enter your Contact Number"
               onChangeText={setNumber}
-              value={number}
+              value={Number}
               textContentType="telephoneNumber"
               keyboardType="phone-pad"
             />
@@ -50,7 +66,7 @@ const Details = ({navigation}) => {
               className="border-2 px-4 rounded-lg my-1 mb-5 mx-7 text-black font-medium text-lg"
               placeholder="Enter your Email Address"
               onChangeText={setEmail}
-              value={email}
+              value={Email}
               keyboardType="email-address"
               textContentType="emailAddress"
             />
@@ -58,9 +74,9 @@ const Details = ({navigation}) => {
               className="border-2 px-4 rounded-lg my-1 mb-5 mx-7 text-black font-medium text-lg"
               placeholder="Enter your Persuing Course"
               onChangeText={setCourse}
-              value={course}
+              value={Course}
             />
-            {name == '' || number == '' || email == '' || course == '' ? (
+            {Name == '' || Number == '' || Email == '' || Course == '' ? (
               <TouchableOpacity
                 className="rounded-2xl flex-row bg-violet-600 justify-center w-28 h-10 ml-28 my-4 items-center py-1"
                 onPress={() => {Alert.alert('Fill all the required fields');}}>
@@ -72,6 +88,7 @@ const Details = ({navigation}) => {
               <TouchableOpacity
                 className="rounded-2xl flex-row bg-violet-600 justify-center w-28 h-10 ml-28 my-4 items-center py-1"
                 onPress={() => {
+                  dataupdate();
                   navigation.navigate('Questionspage');
                 }}>
                 <Text className="text-white text-base font-semibold">
@@ -87,5 +104,8 @@ const Details = ({navigation}) => {
 };
 
 export default Details;
-
+export const emailAddress = [
+  {
+    email:Email,
+  },]
 const styles = StyleSheet.create({});
