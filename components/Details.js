@@ -21,7 +21,7 @@ const Details = ({navigation}) => {
         resizeMode="cover"
         className="h-screen w-screen flex flex-1 flex-col">
         <View
-          className="h-[500px] w-[340px] bg-blue-50 flex flex-col
+          className="h-[500px] w-[340px] bg-bck flex flex-col
       justify-between absolute top-40 self-center  rounded-3xl">
           <View className="h-16 flex justify-center">
             <Text className="text-center text-3xl font-medium text-violet-600 underline">
@@ -60,7 +60,7 @@ const Details = ({navigation}) => {
             />
             <TouchableOpacity className="rounded-2xl flex-row bg-violet-600 justify-center w-28 h-10 ml-28 my-4 items-center py-1"
             onPress={() => {
-              navigation.navigate('Questions');
+              navigation.navigate('Questionspage');
             }}
             >
               <Text className="text-white text-base font-semibold">SUBMIT</Text>
