@@ -89,7 +89,7 @@ const Details = ({navigation}) => {
                 className="rounded-2xl flex-row bg-violet-600 justify-center w-28 h-10 ml-28 my-4 items-center py-1"
                 onPress={() => {
                   dataupdate();
-                  navigation.navigate('Questionspage');
+                  navigation.navigate('Questionspage',{'Email':Email});
                 }}>
                 <Text className="text-white text-base font-semibold">
                   SUBMIT
@@ -104,8 +104,5 @@ const Details = ({navigation}) => {
 };
 
 export default Details;
-export const emailAddress = [
-  {
-    email:Email,
-  },]
+
 const styles = StyleSheet.create({});
