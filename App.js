@@ -7,6 +7,7 @@ import Onboarding2 from './components/Onboarding2';
 import Onboarding3 from './components/Onboarding3';
 import Details from './components/Details';
 import Questionspage from './components/Questionspage';
+import Result from './components/Result';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
@@ -18,6 +19,7 @@ const App = () => {
         <Stack.Screen name="Onboarding3" component={Onboarding3} />
         <Stack.Screen name="Details" component={Details} />
         <Stack.Screen name="Questionspage" component={Questionspage} />
+        <Stack.Screen name="Result" component={Result} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -10,8 +10,9 @@ import {ques} from '../assets/question.js';
 import RadioGroup from 'react-native-radio-buttons-group';
 
 const Questions = ({navigation}) => {
-let [increaser, setincreaser] = useState(0);
- 
+  let [total,settotal]= useState(0);
+  let [increaser, setincreaser] = useState(0);
+
   const radioButtons = useMemo(
     () => [
       {
@@ -67,8 +68,10 @@ let [increaser, setincreaser] = useState(0);
     ],
     [],
   );
-  const [selectedId, setSelectedId] = useState(0);
-console.log(increaser);
+  let [selectedId, setSelectedId] = useState(0);
+  console.log(increaser);
+  console.log(selectedId);
+
   return (
     <View classname="flex justify-center align-middle">
       <ImageBackground
@@ -91,27 +94,67 @@ console.log(increaser);
             />
           </View>
         </View>
-        <View className="flex flex-row absolute bottom-0 justify-between">
-          {increaser == 0 ? (
-            <View className="mx-8 my-8 ">
-              <Text className="text-gray-400 text-lg pr-24">PREVIOUS</Text>
-            </View>
-          ) : (
-            <TouchableOpacity
-              className="mx-8 my-8"
+        <View className="flex flex-row absolute bottom-10 justify-center items-center self-center ">
+          {selectedId == 0 ? (
+            <View
+              className="mx-8 my-8 bg-bck rounded-lg h-10 w-20 self-center align-middle justify-center items-center"
               onPress={() => {
-                navigation.navigate('Onboarding2');
+                setincreaser(increaser + 1);
+                settotal(total + selectedId);
+                setSelectedId((selectedId = 0));
+                console.log(total);
               }}>
-              <Text className="text-white text-lg pr-24">PREVIOUS</Text>
-            </TouchableOpacity>
-          )}
-          <TouchableOpacity
-            className="mx-8 my-8"
-            onPress={()=>{{setincreaser}
-            increaser= increaser+1;
-            }} >
-            <Text className="text-white text-lg"> NEXT </Text>
-          </TouchableOpacity>
+              <Text className="text-black self-center align-middle justify-center items-center text-lg">
+                {' '}
+                NEXT{' '}
+              </Text>
+            </View>
+          )  : ( increaser == 29 ? 
+
+         ( <TouchableOpacity
+        className="mx-8 my-8 bg-bck rounded-lg h-10 w-20 self-center align-middle justify-center items-center hidden"
+      onPress={() => {
+        setincreaser(increaser + 1);
+      settotal(total + selectedId);
+    setSelectedId((selectedId = 0));
+  console.log(total);
+}}>
+              <Text className="text-black self-center align-middle justify-center items-center text-lg">
+                {' '}
+                NEXT{' '}
+              </Text>
+            </TouchableOpacity>):(<TouchableOpacity
+        className="mx-8 my-8 bg-bck rounded-lg h-10 w-20 self-center align-middle justify-center items-center"
+      onPress={() => {
+        setincreaser(increaser + 1);
+      settotal(total + selectedId);
+    setSelectedId((selectedId = 0));
+  console.log(total);
+}}>
+              <Text className="text-black self-center align-middle justify-center items-center text-lg">
+                {' '}
+                NEXT{' '}
+              </Text>
+            </TouchableOpacity>))}
+          {increaser==29?(<TouchableOpacity
+              className="mx-8 my-8 bg-bck rounded-lg h-10 w-20 self-center align-middle justify-center items-center"
+              onPress={() => {
+               navigation.navigation('result');
+              }}>
+              <Text className="text-black self-center align-middle justify-center items-center text-lg">
+                {' '}
+                SUBMIT{' '}
+              </Text>
+            </TouchableOpacity>):(<TouchableOpacity
+              className="mx-8 my-8 bg-bck rounded-lg h-10 w-20 self-center align-middle justify-center items-center hidden"
+              onPress={() => {
+               navigation.navigate('result');
+              }}>
+              <Text className="text-black self-center align-middle justify-center items-center text-lg">
+                {' '}
+                SUBMIT{' '}
+              </Text>
+            </TouchableOpacity>)}
         </View>
       </ImageBackground>
     </View>
