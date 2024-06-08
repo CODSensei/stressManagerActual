@@ -1,4 +1,4 @@
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
+import {Image, ImageBackground, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {total} from './Questionspage';
 import {Course, Email, Name, emailAddress} from './Details';
@@ -46,7 +46,29 @@ const Result = ({navigation,route}) => {
     level = 'Low';
   }
 let totalfinal = (total / 300) * 100;
+const localIcons = {
+  Extremely: require("../assets/extreme.jpeg"),
+  High: require("../assets/extreme.jpeg"),
+  Medium: require("../assets/extreme.jpeg"),
+  Average: require("../assets/extreme.jpeg"),
+  Low: require("../assets/extreme.jpeg"),
+};
 
+// Dynamically access icon image by name
+const getIconByName = (name) => {
+  switch (name) {
+    case "Extremely High":
+      return localIcons.Extremely;
+    case "High":
+      return localIcons.High;
+    case "Medium":
+      return localIcons.Medium;
+      case "Average":
+        return localIcons.Average;
+        case "Average":
+        return localIcons.Low;
+  }
+};
 
   return (
     <View>
@@ -55,13 +77,18 @@ let totalfinal = (total / 300) * 100;
         resizeMode="stretch"
         className="h-screen w-screen flex flex-col justify-center align-middle">
         <View className="flex justify-center align-middle h-3/5 w-80 bg-bck self-center rounded-lg">
-        <Text className='text-black text-center text-lg font-bold absolute top-0 self-center'>RESULTS OF THE SURVEY</Text>
-        <Text className='text-black text-center text-lg font-medium'>Hello  <Text className='text-black text-center text-lg font-bold'>{`${Name}`}   </Text> </Text>
+        <Image
+          source={getIconByName(level)}
+          resizeMode='contain'
+          className="h-24 self-center absolute top-10"
+        />
+        <Text className='text-black text-center text-lg font-bold absolute top-0 self-center '>RESULTS OF THE SURVEY</Text>
+        <Text className='text-black text-center text-lg font-medium pt-10'>Hello  <Text className='text-black text-center text-lg font-bold'>{`${Name}`}   </Text> </Text>
         <Text className='text-black text-center text-lg font-medium'>Phone: <Text className='text-black text-center text-lg font-bold'>{`${Number}`} </Text> </Text>
         <Text className='text-black text-center text-lg font-medium'>Email: <Text className='text-black text-center text-lg font-bold'>{`${Email}`}  </Text> </Text>
         <Text className='text-black text-center text-lg font-medium'>Course:<Text className='text-black text-center text-lg font-bold'>{`${Course}`} </Text> </Text>
         <Text className='text-black text-center text-lg font-medium'>Result:<Text className='text-black text-center text-lg font-bold'>{`${totalfinal}`}% stress </Text> </Text>
-        <Text className='text-black text-center text-lg font-medium'>Level of stress :<Text>{`${level}`}</Text></Text>
+        <Text className='text-black text-center text-lg font-medium'>Level of stress :<Text className='text-black text-center text-lg font-bold'>{`${level}`}</Text></Text>
         </View>
       </ImageBackground>
     </View>
