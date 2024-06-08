@@ -5,8 +5,10 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Alert,
 } from 'react-native';
 import React, {useState} from 'react';
+import {ALERT_TYPE, Dialog} from 'react-native-alert-notification';
 
 const Details = ({navigation}) => {
   const [name, setName] = useState('');
@@ -34,23 +36,23 @@ const Details = ({navigation}) => {
               placeholder="Enter your Name"
               onChangeText={setName}
               value={name}
-              textContentType='name'
+              textContentType="name"
             />
             <TextInput
               className="border-2 px-4 rounded-lg my-1 mx-7 mb-5 text-black font-medium text-lg"
               placeholder="Enter your Contact Number"
               onChangeText={setNumber}
               value={number}
-              textContentType='telephoneNumber'
-              keyboardType='phone-pad'
+              textContentType="telephoneNumber"
+              keyboardType="phone-pad"
             />
             <TextInput
               className="border-2 px-4 rounded-lg my-1 mb-5 mx-7 text-black font-medium text-lg"
               placeholder="Enter your Email Address"
               onChangeText={setEmail}
               value={email}
-              keyboardType='email-address'
-              textContentType='emailAddress'
+              keyboardType="email-address"
+              textContentType="emailAddress"
             />
             <TextInput
               className="border-2 px-4 rounded-lg my-1 mb-5 mx-7 text-black font-medium text-lg"
@@ -58,13 +60,25 @@ const Details = ({navigation}) => {
               onChangeText={setCourse}
               value={course}
             />
-            <TouchableOpacity className="rounded-2xl flex-row bg-violet-600 justify-center w-28 h-10 ml-28 my-4 items-center py-1"
-            onPress={() => {
-              navigation.navigate('Questionspage');
-            }}
-            >
-              <Text className="text-white text-base font-semibold">SUBMIT</Text>
-            </TouchableOpacity>
+            {name == '' || number == '' || email == '' || course == '' ? (
+              <TouchableOpacity
+                className="rounded-2xl flex-row bg-violet-600 justify-center w-28 h-10 ml-28 my-4 items-center py-1"
+                onPress={() => {Alert.alert('Fill all the required fields');}}>
+                <Text className="text-white text-base font-semibold">
+                  SUBMIT
+                </Text>
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                className="rounded-2xl flex-row bg-violet-600 justify-center w-28 h-10 ml-28 my-4 items-center py-1"
+                onPress={() => {
+                  navigation.navigate('Questionspage');
+                }}>
+                <Text className="text-white text-base font-semibold">
+                  SUBMIT
+                </Text>
+              </TouchableOpacity>
+            )}
           </View>
         </View>
       </ImageBackground>
