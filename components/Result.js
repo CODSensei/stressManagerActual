@@ -1,4 +1,4 @@
-import {Image, ImageBackground, StyleSheet, Text, View} from 'react-native';
+import {Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {total} from './Questionspage';
 import {Course, Email, Name, emailAddress} from './Details';
@@ -11,13 +11,11 @@ const Result = ({navigation,route}) => {
   let [Email, setEmail] = useState('');
   let [Course, setCourse] = useState('');
   let [total, settotal] = useState('');
-  console.log(route.params.email);
   useEffect(() => {
     const subscriber = firestore()
       .collection('users')
       .doc(route.params.email)
       .onSnapshot(documentSnapshot => {
-        console.log('User data: ', documentSnapshot.data());
         setName(documentSnapshot.data().name);
         setNumber(documentSnapshot.data().number);
         setEmail(documentSnapshot.data().email);
@@ -48,10 +46,10 @@ const Result = ({navigation,route}) => {
 let totalfinal = (total / 300) * 100;
 const localIcons = {
   Extremely: require("../assets/extreme.jpeg"),
-  High: require("../assets/extreme.jpeg"),
-  Medium: require("../assets/extreme.jpeg"),
-  Average: require("../assets/extreme.jpeg"),
-  Low: require("../assets/extreme.jpeg"),
+  High: require("../assets/high.jpg"),
+  Medium: require("../assets/medium.jpg"),
+  Average: require("../assets/average.jpg"),
+  Low: require("../assets/low.jpg"),
 };
 
 // Dynamically access icon image by name
@@ -88,7 +86,10 @@ const getIconByName = (name) => {
         <Text className='text-black text-center text-lg font-medium'>Email: <Text className='text-black text-center text-lg font-bold'>{`${Email}`}  </Text> </Text>
         <Text className='text-black text-center text-lg font-medium'>Course:<Text className='text-black text-center text-lg font-bold'>{`${Course}`} </Text> </Text>
         <Text className='text-black text-center text-lg font-medium'>Result:<Text className='text-black text-center text-lg font-bold'>{`${totalfinal}`}% stress </Text> </Text>
-        <Text className='text-black text-center text-lg font-medium'>Level of stress :<Text className='text-black text-center text-lg font-bold'>{`${level}`}</Text></Text>
+        <Text className='text-black text-center text-lg font-medium pb-5'>Level of stress :<Text className='text-black text-center text-lg font-bold'>{`${level}`}</Text></Text>
+        <TouchableOpacity className="bg-blue-500 h-10 w-36 self-center  rounded-md items-center" onPress={()=>{
+          navigation.navigate('Details');
+        }}><Text className="font-bold text-lg text-white self-center items-center align-middle py-1">Wanna try again!</Text></TouchableOpacity>
         </View>
       </ImageBackground>
     </View>

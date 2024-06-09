@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   Alert,
+  ScrollView,
 } from 'react-native';
 import React, {useState} from 'react';
 import {ALERT_TYPE, Dialog} from 'react-native-alert-notification';
@@ -33,7 +34,7 @@ const Details = ({navigation}) => {
     console.log('User added!');
   });}
   return (
-    <View className="flex flex-1 justify-center">
+    <ScrollView className="flex">
       <ImageBackground
         source={require('../assets/Welcome1.png')}
         resizeMode="cover"
@@ -50,6 +51,7 @@ const Details = ({navigation}) => {
             <TextInput
               className="border-2 px-4 rounded-lg mx-7 my-1 mb-5 text-black font-medium text-lg"
               placeholder="Enter your Name"
+              placeholderTextColor={"#000"}
               onChangeText={setName}
               value={Name}
               textContentType="name"
@@ -57,6 +59,7 @@ const Details = ({navigation}) => {
             <TextInput
               className="border-2 px-4 rounded-lg my-1 mx-7 mb-5 text-black font-medium text-lg"
               placeholder="Enter your Contact Number"
+              placeholderTextColor={"#000"}
               onChangeText={setNumber}
               value={Number}
               textContentType="telephoneNumber"
@@ -65,6 +68,7 @@ const Details = ({navigation}) => {
             <TextInput
               className="border-2 px-4 rounded-lg my-1 mb-5 mx-7 text-black font-medium text-lg"
               placeholder="Enter your Email Address"
+              placeholderTextColor={"#000"}
               onChangeText={setEmail}
               value={Email}
               keyboardType="email-address"
@@ -73,6 +77,7 @@ const Details = ({navigation}) => {
             <TextInput
               className="border-2 px-4 rounded-lg my-1 mb-5 mx-7 text-black font-medium text-lg"
               placeholder="Enter your Persuing Course"
+              placeholderTextColor={"#000"}
               onChangeText={setCourse}
               value={Course}
             />
@@ -99,7 +104,7 @@ const Details = ({navigation}) => {
           </View>
         </View>
       </ImageBackground>
-    </View>
+    </ScrollView>
   );
 };
 
