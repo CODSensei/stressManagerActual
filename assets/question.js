@@ -87,6 +87,6 @@ export const ques = [
     q: 'Do you feel your stress levels are impacting your daily life and activities?',
   },
   {
-    q: 'Are you open to utilizing technology, such as AI, to receive personalized support for stress management? ',
+    q: 'Are you open to utilize AI, to receive personalized support for stress management? ',
   },
 ];
