@@ -74,7 +74,7 @@ const Questions = ({navigation, route}) => {
             <Text className="text-xl font-medium text-white mt-2 self-center top-0">
               Q.{`${ques[increaser].q}`}
             </Text>
-            <Text className=" mt-5 text-black text-md font-medium underline">
+            <Text className=" mt-5 text-white text-center text-md font-medium underline">
               (Rate on the Scale of 1- 10)
             </Text>
             
@@ -123,7 +123,7 @@ const Questions = ({navigation, route}) => {
                 </View>
               ) : increaser == 29 ? (
                 <TouchableOpacity
-                  className="mx-8 my-8 bg-blue-500 rounded-lg h-10 w-20 self-center align-middle justify-center items-center hidden border-rose-50"
+                  className="mx-8 my-8 bg-blue-500 rounded-lg h-10 w-20 self-center align-middle justify-center items-center hidden border-2 border-rose-50"
                   onPress={() => {
                     settotal(total + value1);
                     setvalue1((value1 = 0));
@@ -142,7 +142,7 @@ const Questions = ({navigation, route}) => {
                 </TouchableOpacity>
               ) : (
                 <TouchableOpacity
-                  className="mx-8 my-8 bg-blue-500 rounded-lg h-10 w-20 self-center align-middle justify-center items-center border-rose-50"
+                  className="mx-8 my-8 bg-blue-500 rounded-lg h-10 w-20 self-center align-middle justify-center items-center border-2 border-rose-50"
                   onPress={() => {
                     settotal(total + value1);
                     setvalue1((value1 = 0));
@@ -162,7 +162,7 @@ const Questions = ({navigation, route}) => {
               )}
               {increaser == 29 ? (
                 <TouchableOpacity
-                  className="mx-8 my-8 bg-blue-500 rounded-lg h-10 w-20 self-center align-middle justify-center items-center border-rose-50"
+                  className="mx-8 my-8 bg-blue-500 rounded-lg h-10 w-20 self-center align-middle justify-center items-center border-2 border-rose-50"
                   onPress={() => {
                     dataupdate();
                     navigation.navigate('Result', {email: route.params.Email});
@@ -179,7 +179,7 @@ const Questions = ({navigation, route}) => {
                 </TouchableOpacity>
               ) : (
                 <TouchableOpacity
-                  className="mx-8 my-8 bg-blue-500 rounded-lg h-10 w-20 self-center align-middle justify-center items-center hidden border-rose-50"
+                  className="mx-8 my-8 bg-blue-500 rounded-lg h-10 w-20 self-center align-middle justify-center items-center hidden border-2 border-rose-50"
                   onPress={() => {
                     navigation.navigate('Result', {email: route.params.Email});
                     console.log('====================================');

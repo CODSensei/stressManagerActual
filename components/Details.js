@@ -27,8 +27,12 @@ const Details = ({navigation}) => {
   let [Course, setCourse] = useState('');
   const [isFocus, setIsFocus] = useState(false);
   const data = [
-    {label: 'B.Tech', value: 'B.Tech'},
-    {label: 'M.Tech', value: 'M.Tech'},
+    {label: 'Goverment Employee', value: 'Goverment Employee'},
+    {label: 'Self-Employed', value: 'Self-Employed'},
+    {label: 'Student', value: 'Student'},
+    {label: 'Doctor', value: 'Doctor'},
+    {label: 'Lawyer', value: 'Lawyer'},
+    {label:'None',value:'None'},
   ];
 
   let dataupdate = () => {
