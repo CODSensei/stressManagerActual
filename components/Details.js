@@ -23,16 +23,19 @@ const Details = ({navigation}) => {
   ];
   let [Name, setName] = useState('');
   let [Number, setNumber] = useState('');
+  const [Parent_Number, setParent_Number] = useState('');
   let [Email, setEmail] = useState('');
+  let [Parent_Email, setparent_Email] = useState('');
   let [Course, setCourse] = useState('');
   const [isFocus, setIsFocus] = useState(false);
+  const [navigationcheck, setnavigationcheck] = useState(false);
   const data = [
     {label: 'Goverment Employee', value: 'Goverment Employee'},
     {label: 'Self-Employed', value: 'Self-Employed'},
     {label: 'Student', value: 'Student'},
     {label: 'Doctor', value: 'Doctor'},
     {label: 'Lawyer', value: 'Lawyer'},
-    {label:'None',value:'None'},
+    {label: 'None', value: 'None'},
   ];
 
   let dataupdate = () => {
@@ -43,6 +46,8 @@ const Details = ({navigation}) => {
         name: Name,
         number: Number,
         email: Email,
+        parent_Email: Parent_Email,
+        parent_contact: Parent_Number,
         course: Course,
       })
       .then(() => {
@@ -55,8 +60,8 @@ const Details = ({navigation}) => {
         source={require('../assets/Welcome1.png')}
         resizeMode="cover"
         className="h-screen w-screen flex flex-1 flex-col">
-        <View className="flex flex-1 h-3/5 w-80 justify-center items-center self-center ml-1 absolute top-44">
-          <LinearGradient colorList={colorList} angle={90} className="h-1/2" />
+        <View className="flex flex-1 h-5/6 w-80 justify-center items-center self-center ml-1 absolute top-16">
+          <LinearGradient colorList={colorList} angle={90} />
           <View
             className=" flex flex-col
           justify-between absolute  self-center  rounded-3xl">
@@ -91,6 +96,24 @@ const Details = ({navigation}) => {
                 keyboardType="email-address"
                 textContentType="emailAddress"
               />
+              <TextInput
+                className="border-2 px-4 rounded-lg my-1 mx-7 mb-5 text-black font-medium text-lg bg-slate-50"
+                placeholder="Gaurdian Contact Number"
+                placeholderTextColor={'#4b5563'}
+                onChangeText={setParent_Number}
+                value={Parent_Number}
+                textContentType="telephoneNumber"
+                keyboardType="phone-pad"
+              />
+              <TextInput
+                className="border-2 px-4 rounded-lg my-1 mb-5 mx-7 text-black font-medium text-lg bg-slate-50"
+                placeholder="Gaurdian Email Address "
+                placeholderTextColor={'#4b5563'}
+                onChangeText={setparent_Email}
+                value={Parent_Email}
+                keyboardType="email-address"
+                textContentType="emailAddress"
+              />
               <Dropdown
                 className="border-2 h-12 px-4 rounded-lg my-1 mb-5 mx-7 text-black font-medium text-lg bg-slate-50"
                 placeholder={!isFocus ? 'Select Job Role' : '...'}
@@ -114,11 +137,26 @@ const Details = ({navigation}) => {
                   setIsFocus(false);
                 }}
               />
-              {Name == '' || Number == '' || Email == '' || Course == '' ? (
+              {Name == '' ||
+              Number == '' ||
+              Email == '' ||
+              Course == '' ||
+              Parent_Email == '' ||
+              Parent_Number == '' ? (
                 <TouchableOpacity
                   className="rounded-2xl flex-row bg-blue-500 justify-center w-28 h-10 mx-24 my-4 items-center py-1"
                   onPress={() => {
-                    Alert.alert('Fill all the required fields');
+                    {
+                      Number == Parent_Number
+                        ? Alert.alert(
+                            'Parent number and Personal Number Can not be the Same',
+                          )
+                        : Email == Parent_Email
+                        ? Alert.alert(
+                            'Parent contact Email and your Personal contact Email Can not be the same ',
+                          )
+                        : Alert.alert('Fill all the required fields');
+                    }
                   }}>
                   <Text className="text-white text-base font-semibold">
                     SUBMIT
@@ -128,8 +166,18 @@ const Details = ({navigation}) => {
                 <TouchableOpacity
                   className="rounded-2xl flex-row bg-blue-500 justify-center w-28 h-10 mx-24 my-4 items-center py-1"
                   onPress={() => {
-                    dataupdate();
-                    navigation.navigate('Questionspage', {Email: Email});
+                    {
+                      Number == Parent_Number
+                        ? Alert.alert(
+                            'Parent number and Personal Number Can not be the Same',
+                          )
+                        : Email == Parent_Email
+                        ? Alert.alert(
+                            'Parent contact Email and your Personal contact Email Can not be the same ',
+                          )
+                        : (dataupdate(),
+                          navigation.navigate('Questionspage', {Email: Email}));
+                    }
                   }}>
                   <Text className="text-white text-base font-semibold">
                     SUBMIT
