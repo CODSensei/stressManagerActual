@@ -1,10 +1,11 @@
 import axios from 'axios';
 
-const smtp = async (Email, Name,total,level) => {
+const smtp = async (Email, Name, total, level) => {
+    
   await axios.post('https://smtpserver-eosin.vercel.app/mail', {
-    "to": Email,
-    "Name": Name,
-    "body": `<!DOCTYPE html>
+    to: Email,
+    Name: Name,
+    body: `<!DOCTYPE html>
       <html lang="en">
       <head>
           <meta charset="UTF-8">
