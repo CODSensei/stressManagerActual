@@ -17,7 +17,7 @@ import {LinearGradient} from 'react-native-gradients';
 const Questions = ({navigation, route}) => {
   let [value1, setvalue1] = useState(0);
 
-  const interpolate = (start: number, end: number) => {
+  const interpolate = (start, end) => {
     let k = (value1 - 0) / 10; // 0 =>min  && 10 => MAX
     return Math.ceil((1 - k) * start + k * end) % 256;
   };
